@@ -1,34 +1,40 @@
-import { useState } from "react";
-//import "./App.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [name, setName] = useState("");
-  const [inputValue, setInput] = useState("");
+  const [fetchedName, setFetchedName] = useState("");
 
-  const handleName = () => {
-    setName(inputValue);
+  const handleSubmit = async () => {
+    if (name) {
+      await axios.post("http://localhost:8080/set-name", { name });
+      setName("");
+    }
   };
 
+  useEffect(() => {
+    const fetchName = async () => {
+      const response = await axios.get("http://localhost:8080/get-name");
+      if (response.data.name) {
+        setFetchedName(response.data.name);
+      }
+    };
+    fetchName();
+  }, []);
+
   return (
-    <>
-      <h2>Enter You name:</h2>
-      <div className="card">
-        <input
-          type="text"
-          name="input"
-          value={inputValue}
-          id="name-input "
-          onChange={(event) => setInput(event.target.value)}
-        />
-        <button onClick={() => handleName()}>Enter</button>
-        <br />
-        <button onClick={() => setCount((count) => count + 1)}>{count}</button>
-        <p>
-          Greet you {count} times, {name}!
-        </p>
-      </div>
-    </>
+    <div>
+      <h1>Введите имя</h1>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="AXI"
+      />
+      <button onClick={handleSubmit}>Submit</button>
+      {fetchedName && <h2>Name from server: {fetchedName}</h2>}
+    </div>
   );
 }
 
