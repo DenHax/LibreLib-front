@@ -26,12 +26,10 @@ in
   pre-commit.hooks = {
     prettier = {
       enable = true;
-      # package = pkgs.nodePackages.prettier;
     };
 
     eslint = {
       enable = true;
-      # package = pkgs.nodePackages.eslint;
     };
   };
 
@@ -52,5 +50,4 @@ in
       echo "Running tests"
       git --version | grep --color=auto "${pkgs.git.version}"
     '';
-
 }

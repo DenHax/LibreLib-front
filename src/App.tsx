@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+//import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -7,7 +7,7 @@ function App() {
   const [inputValue, setInput] = useState("");
 
   const handleName = () => {
-    setName(document.querySelector("#name-input").value);
+    setName(inputValue);
   };
 
   return (

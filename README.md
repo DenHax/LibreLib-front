@@ -8,4 +8,4 @@ ReactJS 18.3.1, TypeScript 5.5.4, NodeJS 22.4.1
 
 ## Dependensies and Utils:
 
-PNPM, Prettie, Eslint
+PNPM, Prettier, Eslint
