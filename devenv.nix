@@ -26,15 +26,12 @@ in
   pre-commit.hooks = {
     prettier = {
       enable = true;
-      package = pkgs.prettierd;
-      settings = {
-        binPath = "${pkgs.prettierd}/bin/prettierd";
-      };
+      # package = pkgs.nodePackages.prettier;
     };
 
     eslint = {
       enable = true;
-      package = pkgs.nodePackages.eslint;
+      # package = pkgs.nodePackages.eslint;
     };
   };
 

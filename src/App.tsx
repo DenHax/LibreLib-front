@@ -18,7 +18,7 @@ function App() {
           type="text"
           name="input"
           value={inputValue}
-          id="name-input"
+          id="name-input "
           onChange={(event) => setInput(event.target.value)}
         />
         <button onClick={() => handleName()}>Enter</button>
